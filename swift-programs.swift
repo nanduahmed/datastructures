@@ -54,3 +54,49 @@ func aPall(value:String) {
     }
     print(count)
 }
+
+/*
+    Merge two sorted arrays
+*/
+
+
+let myArray = [3, 4, 6, 7,11,16,21,22] //j
+let alicesArray = [1, 5, 8, 12, 14, 19] //i
+
+print(mergeArrays(my:myArray, alice:alicesArray))
+
+func mergeArrays(my:[Int] , alice:[Int]) -> [Int] {
+    
+    var i = 0
+    var j = 0
+    
+    var sorted = [Int]()
+    
+    while i < alice.count  {
+        if (j >= my.count) {
+            let remaining = alice[i..<alice.endIndex]
+            sorted.append(contentsOf: remaining)
+            break
+        }
+        
+        if (i >= my.count) {
+            let remaining = my[j..<my.endIndex]
+            sorted.append(contentsOf: remaining)
+            break
+        }
+        
+        if (alice[i] < my[j]) {
+            let aMinval = min(my[j], alice[i])
+            print("alice[\(i)] \(alice[i]) < my[\(j)] \(my[j]) value:\(aMinval)")
+            sorted.append(aMinval)
+            i+=1
+        } else {
+            let aMinval = min(my[j], alice[i])
+            print("alice[\(i)] \(alice[i]) > my[\(j)] \(my[j]) value:\(aMinval)")
+            sorted.append(aMinval)
+            j+=1
+        }
+    }
+    
+    return sorted
+}
