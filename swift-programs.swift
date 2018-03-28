@@ -100,3 +100,25 @@ func mergeArrays(my:[Int] , alice:[Int]) -> [Int] {
     
     return sorted
 }
+
+
+
+func findSecondLargest(array:[Int]) -> Int {
+    var largest = Int.min
+    var secondLargest = Int.min
+    
+    for aVal  in array {
+        if (aVal > largest) {
+            secondLargest = largest
+            largest = aVal
+        } else if (aVal > secondLargest ) {
+            secondLargest = max(secondLargest, aVal)
+        }
+    }
+    
+    return secondLargest
+}
+
+
+
+print(findSecondLargest(array: [6,1,0, 3, -8, 7]))
